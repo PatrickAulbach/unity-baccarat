@@ -33,9 +33,9 @@ public class Bankroll : MonoBehaviour
     {
         return kindOfBet switch
         {
-            var x when x.Equals(KindOfBet.PLAYER) || x.Equals(KindOfBet.BANKER) => betAmounts[kindOfBet],
-            var x when x.Equals(KindOfBet.PLAYER_PAIR) || x.Equals(KindOfBet.BANKER_PAIR) => betAmounts[kindOfBet] * 11,
-            KindOfBet.TIE => betAmounts[kindOfBet] * 8,
+            var x when x.Equals(KindOfBet.PLAYER) || x.Equals(KindOfBet.BANKER) => betAmounts[kindOfBet] * 2,
+            var x when x.Equals(KindOfBet.PLAYER_PAIR) || x.Equals(KindOfBet.BANKER_PAIR) => betAmounts[kindOfBet] * 12,
+            KindOfBet.TIE => betAmounts[kindOfBet] * 9,
             _ => 0,
         };
     }

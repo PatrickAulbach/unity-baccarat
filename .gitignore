@@ -9,6 +9,11 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+/[Uu]serSettings/
+/[Aa]ssets/Plugins/
+/[Aa]ssets/TextMesh Pro/
+/[Aa]ssets/Thaleah_PixelFont/
+/[Aa]ssets/Sprites/cards.png
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -21,6 +26,7 @@
 
 # Visual Studio cache directory
 .vs/
+.vscode
 
 # Gradle cache directory
 .gradle/
