@@ -28,6 +28,8 @@ public class GameController : MonoBehaviour
         gameState = GameState.NOT_RUNNING;
         cardsToDestroy = new List<Card>();
         chipManager = GetComponent<ChipManager>();
+        bankroll.bankroll = 1000;
+        bankroll.ShowBankroll();
     }
 
     void StartGame() 
@@ -64,6 +66,7 @@ public class GameController : MonoBehaviour
         var winningAmount = bankroll.ComputeWinnings(result);
 
         chipManager.SpawnChips(winningAmount);
+        bankroll.ShowBankroll();
 
     }
 

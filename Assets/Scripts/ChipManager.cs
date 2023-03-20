@@ -8,7 +8,7 @@ public class ChipManager : MonoBehaviour
     [SerializeField] GameObject prefab;
 
 
-    private void Start() {
+    private void Awake() {
         SpawnInitialChips();
     }
 
