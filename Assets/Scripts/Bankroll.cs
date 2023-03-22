@@ -6,15 +6,13 @@ public class Bankroll : MonoBehaviour
 {   
     public int bankroll {get; set;}
     private Dictionary<KindOfBet, int> betAmounts;
-    private TextMeshProUGUI bankrollText;
+    [SerializeField] TextMeshProUGUI bankrollText;
     [SerializeField] MultipleDropHandler dropHandler;
  
-    private void Awake() {
-        bankrollText = GetComponent<TextMeshProUGUI>();
-    }
-    public void SetBets(Dictionary<KindOfBet, List<Chip>> bets)
+    public int SetBets(Dictionary<KindOfBet, List<Chip>> bets)
     {
         betAmounts = new Dictionary<KindOfBet, int>();
+        var totalAmount = 0;
 
         foreach (var bet in bets)
         {
@@ -26,10 +24,13 @@ public class Bankroll : MonoBehaviour
                 amount += chip.value;
             }
             betAmounts.Add(bet.Key, amount);
+            totalAmount += amount;
             bankroll -= amount;
         }
 
         dropHandler.DestroyDroppedChips();
+
+        return totalAmount;
     }
 
     public int ComputeWinnings(KindOfBet kindOfBet)
@@ -50,4 +51,5 @@ public class Bankroll : MonoBehaviour
     {
         bankrollText.text = "BANKROLL\n" + bankroll;
     }
+    
 }

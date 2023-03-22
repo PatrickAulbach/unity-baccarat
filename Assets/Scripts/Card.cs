@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField] Vector3 position;
     public SpriteValue spriteValue {get; set;}
 
     public void Reset() 
@@ -15,17 +15,20 @@ public class Card : MonoBehaviour
 
     public void SetSprite()
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = spriteValue.sprite;
+        gameObject.GetComponent<Image>().sprite = spriteValue.sprite;
     }
 
     public void Rotate(Vector3 rotation) 
     {
-        transform.DOBlendableLocalRotateBy(rotation, BaccaratConstants.speed, RotateMode.Fast);
+        transform.DOBlendableLocalRotateBy(new Vector3(0, 0, Random.Range(80, 100)), OptionValues.gameSpeed, RotateMode.Fast);
     }
 
     public void Move(Vector3 position)
     {
-        transform.DOMove(position, BaccaratConstants.speed);
+        transform.DOMove(position, OptionValues.gameSpeed);
+        if (OptionValues.isRandomized) {
+            transform.DOBlendableLocalRotateBy(new Vector3(0, 0, Random.Range(-10, 10)), OptionValues.gameSpeed, RotateMode.LocalAxisAdd);
+        }
     }
 
 }

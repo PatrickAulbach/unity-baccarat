@@ -6,42 +6,32 @@ using UnityEngine.EventSystems;
 public class DropZone : MonoBehaviour, IDropHandler 
 {
     [SerializeField] KindOfBet kindOfBet;
-    MultipleDropHandler dropHandler;
+    private MultipleDropHandler dropHandler;
+    private Vector2 anchoredPosition;
 
     private void Start() 
     {
         dropHandler = GameObject.Find("DropHandler").GetComponent<MultipleDropHandler>();
+        anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
     }
 
     public void OnDrop(PointerEventData eventData) 
     {
-        Debug.Log("OnDrop");
         if (eventData.pointerDrag != null) {
             var chip = eventData.pointerDrag.GetComponent<Chip>();
             chip.dropZone = this;
-            dropHandler.droppedChips[kindOfBet].Add(chip);
-
-            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            AddChip(chip);
+            // eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
         }
     }
 
-    public void Clear() 
+    private void AddChip(Chip chip)
     {
-        dropHandler.droppedChips[kindOfBet] = new List<Chip>();  
+        dropHandler.AddChip(kindOfBet, chip);
+    }
+    public void RemoveChip(Chip chip)
+    {
+        dropHandler.RemoveChip(kindOfBet, chip);
     }
 
-    public void Remove(Chip chip)
-    {
-        dropHandler.droppedChips[kindOfBet].Remove(chip);
-    }
-
-    public KindOfBet GetKindOfBet()
-    {
-        return kindOfBet;
-    }
-
-    public List<Chip> GetBetAmount()
-    {
-        return dropHandler.droppedChips[kindOfBet];
-    }
 }

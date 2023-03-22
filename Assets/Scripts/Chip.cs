@@ -18,7 +18,7 @@ public class Chip : MonoBehaviour
     public void RemoveFromDropZone()
     {
         if (dropZone != null) {
-            dropZone.Remove(this);
+            dropZone.RemoveChip(this);
             dropZone = null;
         }
     }

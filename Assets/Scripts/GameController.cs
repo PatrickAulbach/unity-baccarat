@@ -34,12 +34,12 @@ public class GameController : MonoBehaviour
 
     void StartGame() 
     {   
-        if (GameState.RUNNING.Equals(gameState))
+        var totalAmount = bankroll.SetBets(dropHandler.droppedChips);
+        
+        if (GameState.RUNNING.Equals(gameState) || totalAmount == 0)
         {
             return;
         }
-
-        bankroll.SetBets(dropHandler.droppedChips);
 
         InitGame();
 

@@ -5,7 +5,6 @@ public class Deck : MonoBehaviour
 {
 
     [SerializeField] List<SpriteValue> cardValues;
-    [SerializeField] Sprite cardBack;
     private List<SpriteValue> deck;
     void Start()
     {
@@ -24,16 +23,6 @@ public class Deck : MonoBehaviour
         
         return drawnCard;
 
-    }
-
-    public Sprite GetCardBack() 
-    {
-        return this.cardBack;
-    }
-
-    public Vector2 GetTransform()
-    {
-        return transform.position;
     }
 
     private void CreateDeck() 

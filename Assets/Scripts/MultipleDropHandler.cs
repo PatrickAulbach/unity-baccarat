@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class MultipleDropHandler : MonoBehaviour {
-
-    public Dictionary<KindOfBet, List<Chip>> droppedChips; 
+public class MultipleDropHandler : MonoBehaviour 
+{
+    [SerializeField] TextMeshProUGUI totalAmountBetText;
+    public Dictionary<KindOfBet, List<Chip>> droppedChips;
+    private int totalAmountBet;
 
     private void Start() {
         ResetDroppedChips();
@@ -21,11 +24,21 @@ public class MultipleDropHandler : MonoBehaviour {
 
     public void RemoveChip(KindOfBet kindOfBet, Chip chip)
     {
+        totalAmountBet -= chip.value;
         droppedChips[kindOfBet].Remove(chip);
+        ShowTotalAmountBet();
+    }
+
+    public void AddChip(KindOfBet kindOfBet, Chip chip)
+    {
+        totalAmountBet += chip.value;
+        droppedChips[kindOfBet].Add(chip);
+        ShowTotalAmountBet();
     }
 
     private void ResetDroppedChips()
     {
+        totalAmountBet = 0;
         droppedChips = new Dictionary<KindOfBet, List<Chip>> {
             {KindOfBet.PLAYER, new List<Chip>()},
             {KindOfBet.BANKER, new List<Chip>()},
@@ -33,6 +46,7 @@ public class MultipleDropHandler : MonoBehaviour {
             {KindOfBet.PLAYER_PAIR, new List<Chip>()},
             {KindOfBet.BANKER_PAIR, new List<Chip>()},
         };
+        ShowTotalAmountBet();
     }
 
     public void DestroyDroppedChips()
@@ -57,5 +71,10 @@ public class MultipleDropHandler : MonoBehaviour {
                 chip.GetComponent<CanvasGroup>().blocksRaycasts = blocksRaycasts;
             }
         }
+    }
+
+    private void ShowTotalAmountBet()
+    {
+       totalAmountBetText.text = "TOTAL AMOUNT BET\n" + totalAmountBet; 
     }
 }
