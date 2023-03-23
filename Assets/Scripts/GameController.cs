@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
     private Dictionary<KindOfBet, List<Chip>> bets;
     private GameState gameState;
     private ChipManager chipManager;
+    private KindOfBet result;
     
     
     void Start()
@@ -54,7 +55,7 @@ public class GameController : MonoBehaviour
 
         ComputeResult();
     
-        var result = checkForNatural();
+        result = checkForNatural();
 
         if (KindOfBet.NONE.Equals(result)) 
         {
@@ -63,6 +64,11 @@ public class GameController : MonoBehaviour
         }
 
         StartCoroutine(ShowSprites());
+
+    }
+
+    private void PayWinnings()
+    {
         var winningAmount = bankroll.ComputeWinnings(result);
 
         if (playerHand[0].type.Equals(playerHand[1].type))
@@ -76,7 +82,6 @@ public class GameController : MonoBehaviour
 
         chipManager.SpawnChips(winningAmount);
         bankroll.ShowBankroll();
-
     }
 
     private KindOfBet checkForNatural()
@@ -168,7 +173,9 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(OptionValues.gameSpeed / 3);
         }
         
+        PayWinnings();
         gameState = GameState.NOT_RUNNING;
+
     }
 
     private void InitGame()
