@@ -12,6 +12,7 @@ Once you have Unity installed, you can open the project by following these steps
 2. Download the card assets from https://cazwolf.itch.io/pixel-fantasy-cards and add them to the `Assets/Textures/Cards` folder. Note that the card assets are not included in this project and must be downloaded separately.
 3. Open Unity and click on "Open Project".
 4. Navigate to the directory where you cloned the repository and select the "Baccarat" folder.
+5. Add the sprite names, card values, and card types to the deck GameObject in the Unity editor. To do this, select the Deck GameObject in the Hierarchy window and add sprite, card value and card type for each card you want to add to the deck.
 
 Alternatively, you can use any other card assets that you prefer by replacing the card textures in the `Assets/Textures/Cards` folder.
 
@@ -37,3 +38,7 @@ The project is organized into several folders:
   - **Textures/Cards**: Contains the card assets used in the game.
 - **Scenes**: Contains the main scene for the game, where the gameplay takes place.
 - **Scripts**: Contains all the scripts for the game, including scripts for handling the gameplay, user interface, and sound effects.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
