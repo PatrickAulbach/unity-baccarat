@@ -5,7 +5,7 @@ using UnityEngine;
 public class OptionValues : MonoBehaviour
 {
     public static bool isRandomized;
-    public static float volume;
+    public static float volume = 50;
     public static float gameSpeed = 2;
 
 }
