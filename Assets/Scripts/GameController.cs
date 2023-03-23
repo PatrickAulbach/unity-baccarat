@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Button dealButton;
     [SerializeField] List<DropZone> dropZones;
     [SerializeField] MultipleDropHandler dropHandler;
+    [SerializeField] ButtonManager buttonManager;
     private Dictionary<string, int> scores;
     private List<SpriteValue> playerHand;
     private List<SpriteValue> bankerHand;
@@ -175,6 +176,7 @@ public class GameController : MonoBehaviour
         
         PayWinnings();
         gameState = GameState.NOT_RUNNING;
+        buttonManager.gameState = GameState.NOT_RUNNING;
 
     }
 
@@ -190,6 +192,7 @@ public class GameController : MonoBehaviour
         bankerHand = new List<SpriteValue>();
         scores = new Dictionary<string, int>();
         gameState = GameState.RUNNING;
+        buttonManager.gameState = GameState.RUNNING;
     }
 
 }
