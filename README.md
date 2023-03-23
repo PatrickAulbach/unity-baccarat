@@ -1,6 +1,7 @@
 # Baccarat Unity Project
 
 This is a Unity project that implements the game of Baccarat. The game is a popular casino game that involves betting on the outcome of two hands of cards, the player's hand and the banker's hand.
+Here you can play the game https://patrickaulbach.github.io/unity-baccarat/Build/index.html
 
 ## Getting Started
 
