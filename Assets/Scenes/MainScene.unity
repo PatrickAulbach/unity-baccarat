@@ -4721,6 +4721,20 @@ MonoBehaviour:
   - sprite: {fileID: 405482127, guid: 4fa5478c19a0a214abd345668a6d6b54, type: 3}
     value: 5
     type: 4
+  testValues:
+  - sprite: {fileID: -1386466337, guid: 4fa5478c19a0a214abd345668a6d6b54, type: 3}
+    value: 0
+    type: 10
+  - sprite: {fileID: -1169786889, guid: 4fa5478c19a0a214abd345668a6d6b54, type: 3}
+    value: 0
+    type: 10
+  - sprite: {fileID: 1585706911, guid: 4fa5478c19a0a214abd345668a6d6b54, type: 3}
+    value: 1
+    type: 0
+  - sprite: {fileID: 1709121958, guid: 4fa5478c19a0a214abd345668a6d6b54, type: 3}
+    value: 7
+    type: 6
+  isTest: 1
 --- !u!224 &1493382896
 RectTransform:
   m_ObjectHideFlags: 0

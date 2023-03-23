@@ -5,6 +5,8 @@ public class Deck : MonoBehaviour
 {
 
     [SerializeField] List<SpriteValue> cardValues;
+    [SerializeField] List<SpriteValue> testValues;
+    [SerializeField] bool isTest; 
     private List<SpriteValue> deck;
     void Start()
     {
@@ -13,9 +15,12 @@ public class Deck : MonoBehaviour
 
     public SpriteValue DrawCard() 
     {
-        if (deck.Count < 20)
+        if (!isTest)
         {
-            CreateDeck();
+            if (deck.Count < 20)
+            {
+                CreateDeck();
+            }
         }
 
         var drawnCard = deck[0];
@@ -27,14 +32,23 @@ public class Deck : MonoBehaviour
 
     private void CreateDeck() 
     {
-        deck = new List<SpriteValue>();
-
-        for (int i = 0; i < 5; i++)
+        if (!isTest)
         {
-            deck.AddRange(cardValues);
-        }
+            deck = new List<SpriteValue>();
 
-        deck.Shuffle();
+            for (int i = 0; i < 5; i++)
+            {
+                deck.AddRange(cardValues);
+            }
+
+            deck.Shuffle();
+        }
+        else
+        {
+            deck = new List<SpriteValue>();
+            deck.AddRange(testValues);
+        }
+        
     }
 
 }
