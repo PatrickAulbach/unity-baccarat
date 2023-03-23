@@ -5083,7 +5083,7 @@ MonoBehaviour:
   - sprite: {fileID: 1709121958, guid: 4fa5478c19a0a214abd345668a6d6b54, type: 3}
     value: 0
     type: 6
-  isTest: 1
+  isTest: 0
 --- !u!224 &1493382896
 RectTransform:
   m_ObjectHideFlags: 0

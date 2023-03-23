@@ -213,6 +213,9 @@ MonoBehaviour:
   volumeNumberText: {fileID: 704334118}
   gameSpeedNumberText: {fileID: 1257783829}
   audioSource: {fileID: 1885189094}
+  volumeSlider: {fileID: 1259195362}
+  gameSpeedSlider: {fileID: 1504953094}
+  toggle: {fileID: 1019867906}
 --- !u!1 &62710122
 GameObject:
   m_ObjectHideFlags: 0
