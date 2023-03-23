@@ -17,6 +17,9 @@ Once you have Unity installed, you can open the project by following these steps
 
 Alternatively, you can use any other card assets that you prefer by replacing the card textures in the `Assets/Textures/Cards` folder.
 
+## Audio
+The audio in the game only consist of one song from the unity asset store. I don't wanted to spend more time with audio tracks because I wanted to move on to the next project. Maybe in the future I will add appropriate sounds.
+
 ## Playing the Game
 
 To play the game, simply run the project in Unity and click on the "Play" button in the Unity editor. The game will start and you can place your bets by dragging and dropping the chips into the betting areas.
@@ -39,6 +42,9 @@ The project is organized into several folders:
   - **Textures/Cards**: Contains the card assets used in the game.
 - **Scenes**: Contains the main scene for the game, where the gameplay takes place.
 - **Scripts**: Contains all the scripts for the game, including scripts for handling the gameplay, user interface, and sound effects.
+
+## Credits
+The cards used in this game were created by Caz. You can download the Assets from https://cazwolf.itch.io/pixel-fantasy-cards.
 
 ## License
 
