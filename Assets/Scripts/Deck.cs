@@ -44,7 +44,7 @@ public class SpriteValue
 {
     public Sprite sprite;
     public Value value;
-    
+    public Type type;
 }
 
 public static class Extensions

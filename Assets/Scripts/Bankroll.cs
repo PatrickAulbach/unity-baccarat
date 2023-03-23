@@ -33,18 +33,18 @@ public class Bankroll : MonoBehaviour
         return totalAmount;
     }
 
-    public int ComputeWinnings(KindOfBet kindOfBet)
+    public int ComputeWinnings(KindOfBet result)
     {
-        var result = kindOfBet switch
+        var winnings = result switch
         {
-            var x when x.Equals(KindOfBet.PLAYER) || x.Equals(KindOfBet.BANKER) => betAmounts[kindOfBet] * 2,
-            var x when x.Equals(KindOfBet.PLAYER_PAIR) || x.Equals(KindOfBet.BANKER_PAIR) => betAmounts[kindOfBet] * 12,
-            KindOfBet.TIE => betAmounts[kindOfBet] * 9,
+            var x when x.Equals(KindOfBet.PLAYER) || x.Equals(KindOfBet.BANKER) => betAmounts[result] * 2,
+            var x when x.Equals(KindOfBet.PLAYER_PAIR) || x.Equals(KindOfBet.BANKER_PAIR) => betAmounts[result] * 12,
+            KindOfBet.TIE => betAmounts[result] * 9,
             _ => 0,
         };
 
-        bankroll += result;
-        return result;
+        bankroll += winnings;
+        return winnings;
     }
 
     public void ShowBankroll()

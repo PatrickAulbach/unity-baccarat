@@ -6,6 +6,6 @@ public class OptionValues : MonoBehaviour
 {
     public static bool isRandomized;
     public static float volume;
-    public static float gameSpeed;
+    public static float gameSpeed = 2;
 
 }

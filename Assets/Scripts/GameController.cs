@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     [SerializeField] MultipleDropHandler dropHandler;
     private Dictionary<string, int> scores;
     private List<SpriteValue> playerHand;
-    private List<SpriteValue> dealerHand;
+    private List<SpriteValue> bankerHand;
     private List<Card> cardsToDestroy;
     private Dictionary<KindOfBet, List<Chip>> bets;
     private GameState gameState;
@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
         }
         for (int i = 0; i < 2; i++)
         {
-            dealerHand.Add(deck.DrawCard());
+            bankerHand.Add(deck.DrawCard());
         }
 
         ComputeResult();
@@ -64,6 +64,15 @@ public class GameController : MonoBehaviour
 
         StartCoroutine(ShowSprites());
         var winningAmount = bankroll.ComputeWinnings(result);
+
+        if (playerHand[0].type.Equals(playerHand[1].type))
+        {
+            winningAmount += bankroll.ComputeWinnings(KindOfBet.PLAYER_PAIR);
+        }
+        if (bankerHand[0].type.Equals(bankerHand[1].type))
+        {
+            winningAmount += bankroll.ComputeWinnings(KindOfBet.BANKER_PAIR);
+        }
 
         chipManager.SpawnChips(winningAmount);
         bankroll.ShowBankroll();
@@ -92,12 +101,12 @@ public class GameController : MonoBehaviour
             playerHand.Add(deck.DrawCard());
             
             if (rulesEngine.CheckBankerDraw(scores["Dealer"], (int) playerHand[2].value)) {
-                dealerHand.Add(deck.DrawCard());
+                bankerHand.Add(deck.DrawCard());
             }
         } 
         else if (rulesEngine.CheckEntityDraw(scores["Dealer"])) 
         {
-            dealerHand.Add(deck.DrawCard());
+            bankerHand.Add(deck.DrawCard());
             
         }
     }
@@ -112,7 +121,7 @@ public class GameController : MonoBehaviour
     private void ComputeResult() 
     {
         scores["Player"] = playerHand.Sum(card => (int)card.value) % 10;
-        scores["Dealer"] = dealerHand.Sum(card => (int)card.value) % 10;
+        scores["Dealer"] = bankerHand.Sum(card => (int)card.value) % 10;
     }
 
     IEnumerator ShowSprites()
@@ -124,17 +133,17 @@ public class GameController : MonoBehaviour
             card.spriteValue = playerHand[i];
             card.SetSprite();
             card.Move(BaccaratConstants.PLAYER_CARD_POSITIONS[i]);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(OptionValues.gameSpeed / 3);
         }
 
         for (int i = 0; i < 2; i++)
         {
             var card = cardCreator.SpawnCard();
             cardsToDestroy.Add(card);
-            card.spriteValue = dealerHand[i];
+            card.spriteValue = bankerHand[i];
             card.SetSprite();
             card.Move(BaccaratConstants.BANKER_CARD_POSTIONS[i]);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(OptionValues.gameSpeed / 3);
         }
 
         if (playerHand.Count > 2)
@@ -144,19 +153,19 @@ public class GameController : MonoBehaviour
             card.spriteValue = playerHand[2];
             card.SetSprite();
             card.Move(BaccaratConstants.PLAYER_CARD_POSITIONS[2]);
-            card.Rotate(BaccaratConstants.ROTATION);
-            yield return new WaitForSeconds(1);
+            card.Rotate();
+            yield return new WaitForSeconds(OptionValues.gameSpeed / 3);
         }
 
-        if (dealerHand.Count > 2)
+        if (bankerHand.Count > 2)
         {
             Card card = cardCreator.SpawnCard();
             cardsToDestroy.Add(card);
-            card.spriteValue = dealerHand[2];
+            card.spriteValue = bankerHand[2];
             card.SetSprite();
             card.Move(BaccaratConstants.BANKER_CARD_POSTIONS[2]);
-            card.Rotate(BaccaratConstants.ROTATION);
-            yield return new WaitForSeconds(1);
+            card.Rotate();
+            yield return new WaitForSeconds(OptionValues.gameSpeed / 3);
         }
         
         gameState = GameState.NOT_RUNNING;
@@ -171,7 +180,7 @@ public class GameController : MonoBehaviour
         cardsToDestroy = new List<Card>();
 
         playerHand = new List<SpriteValue>();
-        dealerHand = new List<SpriteValue>();
+        bankerHand = new List<SpriteValue>();
         scores = new Dictionary<string, int>();
         gameState = GameState.RUNNING;
     }

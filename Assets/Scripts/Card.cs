@@ -18,9 +18,10 @@ public class Card : MonoBehaviour
         gameObject.GetComponent<Image>().sprite = spriteValue.sprite;
     }
 
-    public void Rotate(Vector3 rotation) 
+    public void Rotate() 
     {
-        transform.DOBlendableLocalRotateBy(new Vector3(0, 0, Random.Range(80, 100)), OptionValues.gameSpeed, RotateMode.Fast);
+        Vector3 rotation = OptionValues.isRandomized == true ? new Vector3(0, 0, Random.Range(80, 100)) : BaccaratConstants.ROTATION;
+        transform.DOBlendableLocalRotateBy(rotation, OptionValues.gameSpeed, RotateMode.Fast);
     }
 
     public void Move(Vector3 position)

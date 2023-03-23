@@ -21,7 +21,6 @@ public class DropZone : MonoBehaviour, IDropHandler
             var chip = eventData.pointerDrag.GetComponent<Chip>();
             chip.dropZone = this;
             AddChip(chip);
-            // eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
         }
     }
 
