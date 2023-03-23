@@ -23,10 +23,8 @@ public class ButtonManager : MonoBehaviour
 
     public void EnableOptions(bool active)
     {
-        Debug.Log("EnableOptions");
         if (GameState.NOT_RUNNING.Equals(gameState))
         {
-            Debug.Log("SetActive");
             options.gameObject.SetActive(active);
         }
     }
