@@ -1,6 +1,7 @@
 # Baccarat Unity Project
 
 This is a Unity project that implements the game of Baccarat. The game is a popular casino game that involves betting on the outcome of two hands of cards, the player's hand and the banker's hand.
+Here you can play the game https://patrickaulbach.github.io/unity-baccarat/Build/index.html
 
 ## Getting Started
 
@@ -15,6 +16,9 @@ Once you have Unity installed, you can open the project by following these steps
 5. Add the sprite names, card values, and card types to the deck GameObject in the Unity editor. To do this, select the Deck GameObject in the Hierarchy window and add sprite, card value and card type for each card you want to add to the deck.
 
 Alternatively, you can use any other card assets that you prefer by replacing the card textures in the `Assets/Textures/Cards` folder.
+
+## Audio
+The audio in the game only consist of one song from the unity asset store. I don't wanted to spend more time with audio tracks because I wanted to move on to the next project. Maybe in the future I will add appropriate sounds.
 
 ## Playing the Game
 
@@ -38,6 +42,9 @@ The project is organized into several folders:
   - **Textures/Cards**: Contains the card assets used in the game.
 - **Scenes**: Contains the main scene for the game, where the gameplay takes place.
 - **Scripts**: Contains all the scripts for the game, including scripts for handling the gameplay, user interface, and sound effects.
+
+## Credits
+The cards used in this game were created by Caz. You can download the Assets from https://cazwolf.itch.io/pixel-fantasy-cards.
 
 ## License
 
